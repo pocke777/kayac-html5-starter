@@ -1,10 +1,16 @@
-import Sample from './lib/Sample';
-import $ from 'jquery';
+import React from 'react';
+import {render} from 'react-dom';
+import { browserHistory, Router, Route, IndexRoute, Link } from 'react-router'
 
-const sample = new Sample({
-    name: 'world'
-});
+import App   from './components/App.jsx';
+import About from './components/About.jsx';
+import Top   from './components/Top.jsx';
 
-$('.wrapper').on('click', () => {
-    console.log(`hello, ${sample.name}.`);
-});
+render((
+  <Router history={browserHistory}>
+    <Route path='/' component={App}>
+      <IndexRoute component={Top} />
+      <Route path='/about' component={About} />
+    </Route>
+  </Router>), document.querySelector('#app')
+);
