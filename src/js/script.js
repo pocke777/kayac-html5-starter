@@ -1,4 +1,6 @@
 import React from 'react';
+window.React = React;
+
 import {render} from 'react-dom';
 import { hashHistory, Router, Route, IndexRoute, Link } from 'react-router'
 

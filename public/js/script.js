@@ -25400,8 +25400,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var App = function (_React$Component) {
-  _inherits(App, _React$Component);
+var App = function (_window$React$Compone) {
+  _inherits(App, _window$React$Compone);
 
   function App() {
     _classCallCheck(this, App);
@@ -25429,7 +25429,7 @@ var App = function (_React$Component) {
   }]);
 
   return App;
-}(_react2.default.Component);
+}(window.React.Component);
 
 exports.default = App;
 
@@ -25517,6 +25517,8 @@ var _Top = require('./components/Top.jsx');
 var _Top2 = _interopRequireDefault(_Top);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+window.React = _react2.default;
 
 (0, _reactDom.render)(_react2.default.createElement(
   _reactRouter.Router,

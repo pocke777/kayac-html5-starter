@@ -1,5 +1,5 @@
 import React from 'react';
-export default class App extends React.Component {
+export default class App extends window.React.Component {
   constructor() {
     super();
     this.state = {};
