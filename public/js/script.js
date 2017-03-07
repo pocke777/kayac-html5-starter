@@ -27338,15 +27338,6 @@ var DECREMENT_COUNTER = exports.DECREMENT_COUNTER = {
 },{}],269:[function(require,module,exports){
 'use strict';
 
-var _Top = require('./Top.js');
-
-var _Top2 = _interopRequireDefault(_Top);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-},{"./Top.js":268}],270:[function(require,module,exports){
-'use strict';
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -27373,15 +27364,19 @@ var Top = function (_React$Component) {
   function Top() {
     _classCallCheck(this, Top);
 
-    var _this = _possibleConstructorReturn(this, (Top.__proto__ || Object.getPrototypeOf(Top)).call(this));
-
-    _this.state = {};
-    return _this;
+    return _possibleConstructorReturn(this, (Top.__proto__ || Object.getPrototypeOf(Top)).apply(this, arguments));
   }
 
   _createClass(Top, [{
     key: 'render',
     value: function render() {
+      var _props = this.props,
+          count = _props.count,
+          onIncrement = _props.onIncrement,
+          onDecrement = _props.onDecrement;
+
+      console.log(this.props);
+      console.log(onIncrement);
       return _react2.default.createElement(
         'div',
         null,
@@ -27389,6 +27384,17 @@ var Top = function (_React$Component) {
           'h2',
           null,
           'Top'
+        ),
+        count,
+        _react2.default.createElement(
+          'button',
+          { onClick: onIncrement },
+          '+1'
+        ),
+        _react2.default.createElement(
+          'button',
+          { onClick: onDecrement },
+          '-1'
         ),
         _react2.default.createElement(
           _reactRouter.Link,
@@ -27404,7 +27410,7 @@ var Top = function (_React$Component) {
 
 exports.default = Top;
 
-},{"react":255,"react-router":224}],271:[function(require,module,exports){
+},{"react":255,"react-router":224}],270:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27417,23 +27423,23 @@ var _Top = require('../components/Top.jsx');
 
 var _Top2 = _interopRequireDefault(_Top);
 
-var _actions = require('../actions');
+var _Top3 = require('../actions/Top.js');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function mapStateToProps(state) {
   return {
-    count: state.count
+    count: state.top.count
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     onIncrement: function onIncrement() {
-      return dispatch(_actions.INCREMENT_COUNTER);
+      return dispatch(_Top3.INCREMENT_COUNTER);
     },
     onDecrement: function onDecrement() {
-      return dispatch(_actions.DECREMENT_COUNTER);
+      return dispatch(_Top3.DECREMENT_COUNTER);
     }
   };
 }
@@ -27442,7 +27448,7 @@ var Top = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Top2.de
 
 exports.default = Top;
 
-},{"../actions":269,"../components/Top.jsx":270,"react-redux":192}],272:[function(require,module,exports){
+},{"../actions/Top.js":268,"../components/Top.jsx":269,"react-redux":192}],271:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27463,7 +27469,7 @@ function topReducer() {
   }
 }
 
-},{}],273:[function(require,module,exports){
+},{}],272:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27482,7 +27488,7 @@ exports.default = (0, _redux.combineReducers)({
   top: _Top2.default
 });
 
-},{"./Top.js":272,"redux":261}],274:[function(require,module,exports){
+},{"./Top.js":271,"redux":261}],273:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -27535,4 +27541,4 @@ var store = (0, _redux.createStore)(_index2.default);
   )
 ), document.querySelector('#app'));
 
-},{"./containers/Top.js":271,"./reducers/index.js":273,"react":255,"react-dom":56,"react-redux":192,"react-router":224,"redux":261}]},{},[274]);
+},{"./containers/Top.js":270,"./reducers/index.js":272,"react":255,"react-dom":56,"react-redux":192,"react-router":224,"redux":261}]},{},[273]);

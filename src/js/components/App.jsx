@@ -2,7 +2,6 @@ import React from 'react';
 export default class App extends window.React.Component {
   constructor() {
     super();
-    this.state = {};
   }
   render() {
     return(
