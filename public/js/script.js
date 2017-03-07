@@ -27327,108 +27327,24 @@ module.exports = warning;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var INCREMENT_COUNTER = exports.INCREMENT_COUNTER = {
+  type: 'INCREMENT_COUNTER'
+};
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var DECREMENT_COUNTER = exports.DECREMENT_COUNTER = {
+  type: 'DECREMENT_COUNTER'
+};
 
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var About = function (_React$Component) {
-  _inherits(About, _React$Component);
-
-  function About() {
-    _classCallCheck(this, About);
-
-    var _this = _possibleConstructorReturn(this, (About.__proto__ || Object.getPrototypeOf(About)).call(this));
-
-    _this.state = {};
-    return _this;
-  }
-
-  _createClass(About, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'h2',
-          null,
-          'About'
-        )
-      );
-    }
-  }]);
-
-  return About;
-}(_react2.default.Component);
-
-exports.default = About;
-
-},{"react":255}],269:[function(require,module,exports){
+},{}],269:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _Top = require('./Top.js');
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
+var _Top2 = _interopRequireDefault(_Top);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var App = function (_window$React$Compone) {
-  _inherits(App, _window$React$Compone);
-
-  function App() {
-    _classCallCheck(this, App);
-
-    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
-
-    _this.state = {};
-    return _this;
-  }
-
-  _createClass(App, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'h1',
-          null,
-          'App'
-        ),
-        this.props.children
-      );
-    }
-  }]);
-
-  return App;
-}(window.React.Component);
-
-exports.default = App;
-
-},{"react":255}],270:[function(require,module,exports){
+},{"./Top.js":268}],270:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27494,6 +27410,44 @@ exports.default = Top;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _reactRedux = require('react-redux');
+
+var _Top = require('../components/Top.jsx');
+
+var _Top2 = _interopRequireDefault(_Top);
+
+var _actions = require('../actions');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function mapStateToProps(state) {
+  return {
+    count: state.count
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onIncrement: function onIncrement() {
+      return dispatch(_actions.INCREMENT_COUNTER);
+    },
+    onDecrement: function onDecrement() {
+      return dispatch(_actions.DECREMENT_COUNTER);
+    }
+  };
+}
+
+var Top = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Top2.default);
+
+exports.default = Top;
+
+},{"../actions":269,"../components/Top.jsx":270,"react-redux":192}],272:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.default = topReducer;
 function topReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { count: 0 };
@@ -27509,7 +27463,7 @@ function topReducer() {
   }
 }
 
-},{}],272:[function(require,module,exports){
+},{}],273:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27528,7 +27482,7 @@ exports.default = (0, _redux.combineReducers)({
   top: _Top2.default
 });
 
-},{"./Top.js":271,"redux":261}],273:[function(require,module,exports){
+},{"./Top.js":272,"redux":261}],274:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -27539,15 +27493,7 @@ var _reactDom = require('react-dom');
 
 var _reactRouter = require('react-router');
 
-var _App = require('./components/App.jsx');
-
-var _App2 = _interopRequireDefault(_App);
-
-var _About = require('./components/About.jsx');
-
-var _About2 = _interopRequireDefault(_About);
-
-var _Top = require('./components/Top.jsx');
+var _Top = require('./containers/Top.js');
 
 var _Top2 = _interopRequireDefault(_Top);
 
@@ -27563,7 +27509,21 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 window.React = _react2.default;
 
+// import App   from './components/App.jsx';
+// import About from './components/About.jsx';
+
 var store = (0, _redux.createStore)(_index2.default);
+
+// render((
+//   <Provider store={store}>
+//     <Router history={hashHistory}>
+//       <Route path='/' component={App}>
+//         <IndexRoute component={Top} />
+//         <Route path='/about' component={About} />
+//       </Route>
+//     </Router>
+//   </Provider>), document.querySelector('#app')
+// );
 
 (0, _reactDom.render)(_react2.default.createElement(
   _reactRedux.Provider,
@@ -27571,13 +27531,8 @@ var store = (0, _redux.createStore)(_index2.default);
   _react2.default.createElement(
     _reactRouter.Router,
     { history: _reactRouter.hashHistory },
-    _react2.default.createElement(
-      _reactRouter.Route,
-      { path: '/', component: _App2.default },
-      _react2.default.createElement(_reactRouter.IndexRoute, { component: _Top2.default }),
-      _react2.default.createElement(_reactRouter.Route, { path: '/about', component: _About2.default })
-    )
+    _react2.default.createElement(_reactRouter.Route, { path: '/', component: _Top2.default })
   )
 ), document.querySelector('#app'));
 
-},{"./components/About.jsx":268,"./components/App.jsx":269,"./components/Top.jsx":270,"./reducers/index.js":272,"react":255,"react-dom":56,"react-redux":192,"react-router":224,"redux":261}]},{},[273]);
+},{"./containers/Top.js":271,"./reducers/index.js":273,"react":255,"react-dom":56,"react-redux":192,"react-router":224,"redux":261}]},{},[274]);
