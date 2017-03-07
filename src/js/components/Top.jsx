@@ -4,7 +4,6 @@ export default class Top extends React.Component {
   render() {
     const { count, onIncrement, onDecrement } = this.props;
     console.log(this.props);
-    console.log(onIncrement);
     return(
       <div>
         <h2>Top</h2>

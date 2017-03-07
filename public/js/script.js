@@ -27376,7 +27376,6 @@ var Top = function (_React$Component) {
           onDecrement = _props.onDecrement;
 
       console.log(this.props);
-      console.log(onIncrement);
       return _react2.default.createElement(
         'div',
         null,
